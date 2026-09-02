@@ -1,0 +1,21 @@
+supplier_id,supplier_name,supplier_country,supplier_rating,lead_time_days
+SUP001,Alpha Manufacturing,China,4.8,14
+SUP002,Prime Components,Germany,4.6,10
+SUP003,Global Industrial Supplies,United States,4.7,12
+SUP004,NovaTech Industries,South Korea,4.5,9
+SUP005,EverBright Manufacturing,Vietnam,4.4,16
+SUP006,BluePeak Suppliers,India,4.3,18
+SUP007,Orion Wholesale,Turkey,4.2,15
+SUP008,Pinnacle Goods Co.,Malaysia,4.6,11
+SUP009,Zenith Imports,Japan,4.9,8
+SUP010,Frontline Distributors,Netherlands,4.5,13
+SUP011,Pacific Source Ltd.,Thailand,4.1,17
+SUP012,Vertex Global Supply,Singapore,4.7,9
+SUP013,Continental Traders,Italy,4.4,14
+SUP014,Summit Logistics Supply,United Kingdom,4.8,10
+SUP015,Horizon Industrial Co.,Indonesia,4.3,16
+SUP016,Excel Procurement Ltd.,Mexico,4.2,15
+SUP017,Sterling Manufacturing,Canada,4.6,11
+SUP018,Atlas Supply Group,Brazil,4.5,13
+SUP019,Metro Components,France,4.7,12
+SUP020,Infinity Sourcing,United Arab Emirates,4.4,9
