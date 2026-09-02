@@ -19,7 +19,7 @@ Management wants to understand:
 - [Shipments](shipments.csv)
 
 ## Database Schema
-- (vertex_company_main_schema.sql)
+- [Script](vertex_company_main_schema.sql)
 
   
 ## Key Business Questions
