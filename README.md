@@ -14,12 +14,14 @@ Management wants to understand:
 * How shipment performance changes throughout the year.
 
 ## Dataset
-- ![Suppliers](suppliers.csv)
+- [Suppliers](suppliers.csv)
 - [Products](products.csv)
 - [Shipments](shipments.csv)
 
 ## Database Schema
+- (vertex_company_main_schema.sql)
 
+  
 ## Key Business Questions
 
 ## SQL Techniques Used
