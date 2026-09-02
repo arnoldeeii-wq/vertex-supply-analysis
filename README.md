@@ -1,7 +1,7 @@
 # Supply Chain Performance Analysis
 
 ## Project Overview
-### Vertex Supply Chain Ltd. imports and distributes consumer goods to warehouses across the country. The task is to generate business imsights by quering the data that had been beforehand cleaned by the data engineering team. 
+### Vertex Supply Chain Ltd. imports and distributes consumer goods to warehouses across the country. The task is to generate business insights by querying the data that had been cleaned beforehand by the data engineering team. 
 
 ## Objectives
 Management wants to understand:
@@ -14,7 +14,7 @@ Management wants to understand:
 * How shipment performance changes throughout the year.
 
 ## Dataset
-- ![Suppliers](vertex-supply-analysis/suppliers.csv)
+- ![Suppliers](suppliers.csv)
 - [Products](data/products.csv)
 - [Shipments](data/shipments.csv)
 
