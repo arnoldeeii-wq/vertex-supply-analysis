@@ -63,5 +63,8 @@ Which suppliers or products should management prioritize for improvement or expa
 
 
 ## Screenshots
-
-
+[Profitability Table](Profitability_table.png)
+[Suppliers Logistics Cost](Suppliers_logistics_cost.png)
+[Gross Profit](gross_profit.png)
+[Products Profit Rank](products_profit_rank.png)
+[Revenue Potential](revenue_potential.png)
