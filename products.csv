@@ -1,0 +1,101 @@
+product_id,product_name,category,supplier_id,unit_cost,selling_price
+PROD001,Electronic Product 001,Electronics,SUP001,7.5,13.5
+PROD002,Home Appliance 002,Home Appliances,SUP002,10.0,18.0
+PROD003,Office Supply 003,Office Supplies,SUP003,12.5,22.5
+PROD004,Kitchen Product 004,Kitchen,SUP004,15.0,27.0
+PROD005,Accessory 005,Accessories,SUP005,17.5,31.5
+PROD006,Electronic Product 006,Electronics,SUP006,20.0,36.0
+PROD007,Home Appliance 007,Home Appliances,SUP007,22.5,40.5
+PROD008,Office Supply 008,Office Supplies,SUP008,25.0,45.0
+PROD009,Kitchen Product 009,Kitchen,SUP009,27.5,49.5
+PROD010,Accessory 010,Accessories,SUP010,30.0,54.0
+PROD011,Electronic Product 011,Electronics,SUP011,32.5,58.5
+PROD012,Home Appliance 012,Home Appliances,SUP012,35.0,63.0
+PROD013,Office Supply 013,Office Supplies,SUP013,37.5,67.5
+PROD014,Kitchen Product 014,Kitchen,SUP014,40.0,72.0
+PROD015,Accessory 015,Accessories,SUP015,42.5,76.5
+PROD016,Electronic Product 016,Electronics,SUP016,45.0,81.0
+PROD017,Home Appliance 017,Home Appliances,SUP017,47.5,85.5
+PROD018,Office Supply 018,Office Supplies,SUP018,50.0,90.0
+PROD019,Kitchen Product 019,Kitchen,SUP019,52.5,94.5
+PROD020,Accessory 020,Accessories,SUP020,5.0,9.0
+PROD021,Electronic Product 021,Electronics,SUP001,7.5,13.5
+PROD022,Home Appliance 022,Home Appliances,SUP002,10.0,18.0
+PROD023,Office Supply 023,Office Supplies,SUP003,12.5,22.5
+PROD024,Kitchen Product 024,Kitchen,SUP004,15.0,27.0
+PROD025,Accessory 025,Accessories,SUP005,17.5,31.5
+PROD026,Electronic Product 026,Electronics,SUP006,20.0,36.0
+PROD027,Home Appliance 027,Home Appliances,SUP007,22.5,40.5
+PROD028,Office Supply 028,Office Supplies,SUP008,25.0,45.0
+PROD029,Kitchen Product 029,Kitchen,SUP009,27.5,49.5
+PROD030,Accessory 030,Accessories,SUP010,30.0,54.0
+PROD031,Electronic Product 031,Electronics,SUP011,32.5,58.5
+PROD032,Home Appliance 032,Home Appliances,SUP012,35.0,63.0
+PROD033,Office Supply 033,Office Supplies,SUP013,37.5,67.5
+PROD034,Kitchen Product 034,Kitchen,SUP014,40.0,72.0
+PROD035,Accessory 035,Accessories,SUP015,42.5,76.5
+PROD036,Electronic Product 036,Electronics,SUP016,45.0,81.0
+PROD037,Home Appliance 037,Home Appliances,SUP017,47.5,85.5
+PROD038,Office Supply 038,Office Supplies,SUP018,50.0,90.0
+PROD039,Kitchen Product 039,Kitchen,SUP019,52.5,94.5
+PROD040,Accessory 040,Accessories,SUP020,5.0,9.0
+PROD041,Electronic Product 041,Electronics,SUP001,7.5,13.5
+PROD042,Home Appliance 042,Home Appliances,SUP002,10.0,18.0
+PROD043,Office Supply 043,Office Supplies,SUP003,12.5,22.5
+PROD044,Kitchen Product 044,Kitchen,SUP004,15.0,27.0
+PROD045,Accessory 045,Accessories,SUP005,17.5,31.5
+PROD046,Electronic Product 046,Electronics,SUP006,20.0,36.0
+PROD047,Home Appliance 047,Home Appliances,SUP007,22.5,40.5
+PROD048,Office Supply 048,Office Supplies,SUP008,25.0,45.0
+PROD049,Kitchen Product 049,Kitchen,SUP009,27.5,49.5
+PROD050,Accessory 050,Accessories,SUP010,30.0,54.0
+PROD051,Electronic Product 051,Electronics,SUP011,32.5,58.5
+PROD052,Home Appliance 052,Home Appliances,SUP012,35.0,63.0
+PROD053,Office Supply 053,Office Supplies,SUP013,37.5,67.5
+PROD054,Kitchen Product 054,Kitchen,SUP014,40.0,72.0
+PROD055,Accessory 055,Accessories,SUP015,42.5,76.5
+PROD056,Electronic Product 056,Electronics,SUP016,45.0,81.0
+PROD057,Home Appliance 057,Home Appliances,SUP017,47.5,85.5
+PROD058,Office Supply 058,Office Supplies,SUP018,50.0,90.0
+PROD059,Kitchen Product 059,Kitchen,SUP019,52.5,94.5
+PROD060,Accessory 060,Accessories,SUP020,5.0,9.0
+PROD061,Electronic Product 061,Electronics,SUP001,7.5,13.5
+PROD062,Home Appliance 062,Home Appliances,SUP002,10.0,18.0
+PROD063,Office Supply 063,Office Supplies,SUP003,12.5,22.5
+PROD064,Kitchen Product 064,Kitchen,SUP004,15.0,27.0
+PROD065,Accessory 065,Accessories,SUP005,17.5,31.5
+PROD066,Electronic Product 066,Electronics,SUP006,20.0,36.0
+PROD067,Home Appliance 067,Home Appliances,SUP007,22.5,40.5
+PROD068,Office Supply 068,Office Supplies,SUP008,25.0,45.0
+PROD069,Kitchen Product 069,Kitchen,SUP009,27.5,49.5
+PROD070,Accessory 070,Accessories,SUP010,30.0,54.0
+PROD071,Electronic Product 071,Electronics,SUP011,32.5,58.5
+PROD072,Home Appliance 072,Home Appliances,SUP012,35.0,63.0
+PROD073,Office Supply 073,Office Supplies,SUP013,37.5,67.5
+PROD074,Kitchen Product 074,Kitchen,SUP014,40.0,72.0
+PROD075,Accessory 075,Accessories,SUP015,42.5,76.5
+PROD076,Electronic Product 076,Electronics,SUP016,45.0,81.0
+PROD077,Home Appliance 077,Home Appliances,SUP017,47.5,85.5
+PROD078,Office Supply 078,Office Supplies,SUP018,50.0,90.0
+PROD079,Kitchen Product 079,Kitchen,SUP019,52.5,94.5
+PROD080,Accessory 080,Accessories,SUP020,5.0,9.0
+PROD081,Electronic Product 081,Electronics,SUP001,7.5,13.5
+PROD082,Home Appliance 082,Home Appliances,SUP002,10.0,18.0
+PROD083,Office Supply 083,Office Supplies,SUP003,12.5,22.5
+PROD084,Kitchen Product 084,Kitchen,SUP004,15.0,27.0
+PROD085,Accessory 085,Accessories,SUP005,17.5,31.5
+PROD086,Electronic Product 086,Electronics,SUP006,20.0,36.0
+PROD087,Home Appliance 087,Home Appliances,SUP007,22.5,40.5
+PROD088,Office Supply 088,Office Supplies,SUP008,25.0,45.0
+PROD089,Kitchen Product 089,Kitchen,SUP009,27.5,49.5
+PROD090,Accessory 090,Accessories,SUP010,30.0,54.0
+PROD091,Electronic Product 091,Electronics,SUP011,32.5,58.5
+PROD092,Home Appliance 092,Home Appliances,SUP012,35.0,63.0
+PROD093,Office Supply 093,Office Supplies,SUP013,37.5,67.5
+PROD094,Kitchen Product 094,Kitchen,SUP014,40.0,72.0
+PROD095,Accessory 095,Accessories,SUP015,42.5,76.5
+PROD096,Electronic Product 096,Electronics,SUP016,45.0,81.0
+PROD097,Home Appliance 097,Home Appliances,SUP017,47.5,85.5
+PROD098,Office Supply 098,Office Supplies,SUP018,50.0,90.0
+PROD099,Kitchen Product 099,Kitchen,SUP019,52.5,94.5
+PROD100,Accessory 100,Accessories,SUP020,5.0,9.0
