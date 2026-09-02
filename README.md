@@ -15,8 +15,8 @@ Management wants to understand:
 
 ## Dataset
 - ![Suppliers](suppliers.csv)
-- [Products](data/products.csv)
-- [Shipments](data/shipments.csv)
+- [Products](products.csv)
+- [Shipments](shipments.csv)
 
 ## Database Schema
 
