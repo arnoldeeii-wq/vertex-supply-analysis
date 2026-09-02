@@ -1,7 +1,7 @@
 -- KPIs
 -- Inventory Count
 
-select sum(quantity_received) as total_inventory
+select sum(quantity_received)-sum(quantity_damaged) as total_inventory
 from shipments;
 
 -- Total Revenue Potential
@@ -13,12 +13,17 @@ on
 productskl.product_id = shipments.product_id;
 
 -- Total Gross Profit
-
-select sum((selling_price - unit_cost) * quantity_received) as gross_profit
-from productskl
-join shipments
-on
-productskl.product_id = shipments.product_id;
+with net as
+( select  product_name,
+sum(quantity_received-quantity_damaged) * selling_price as net_rev,
+		sum((quantity_received) * unit_cost) as inventory_cost, 
+		sum(transport_cost) as total_trans_cost
+from productskl p
+join shipments sh on
+p.product_id = sh.product_id
+group by product_name, selling_price)
+select sum(net_rev) -sum(inventory_cost) as gross_profit
+from net;
 
 -- Total Net Profit after Transportation Cost
 
@@ -67,7 +72,7 @@ from shipments;
 
 -- Percentage of Damaged Goods
 
-select sum(quantity_damaged)
+select round(sum(quantity_damaged)/sum(quantity_received) * 100,2) as damage_percent
 from shipments;
 
 
@@ -77,7 +82,7 @@ from shipments;
 WITH supplier_returns AS (
     SELECT
         s.supplier_name,
-        SUM((p.selling_price) * sh.quantity_received) AS total_revenue
+        SUM((p.selling_price) * (sh.quantity_received-sh.quantity_damaged)) AS total_revenue
     FROM suppliers s
     JOIN productskl p
         ON s.supplier_id = p.supplier_id
@@ -97,7 +102,7 @@ FROM supplier_returns
 WITH supplier_returns AS (
     SELECT
         s.supplier_name,
-        SUM((p.selling_price - p.unit_cost) * sh.quantity_received) AS total_profit
+        SUM((p.selling_price - p.unit_cost) * (sh.quantity_received-sh.quantity_damaged)) AS total_profit
     FROM suppliers s
     JOIN productskl p
         ON s.supplier_id = p.supplier_id
@@ -127,7 +132,7 @@ FROM supplier_returns
 WITH inventory_table AS (
     SELECT 
         supplier_name,
-        SUM(quantity_received * selling_price) AS inventory_value
+        SUM((quantity_received - quantity_damaged) * selling_price) AS inventory_value
     FROM shipments sh
     JOIN productskl p 
         ON sh.product_id = p.product_id
@@ -209,10 +214,10 @@ select supplier_name, avg(lead_time_days) as avg_lead_time_in_days
  -- products with the highest revenue
  
  with revenue_table as (
- select product_name, sum(selling_price * quantity_received) as revenue
+ select product_name, sum(selling_price * (sh.quantity_received-sh.quantity_damaged)) as revenue
  from productskl p
- join shipments s on
- p.product_id = s.product_id
+ join shipments sh on
+ p.product_id = sh.product_id
  group by product_name)
  
  select product_name, 
@@ -226,7 +231,8 @@ select supplier_name, avg(lead_time_days) as avg_lead_time_in_days
  WITH top_3_products AS (
     SELECT
          p.product_name,
-        SUM((p.selling_price - p.unit_cost) * sh.quantity_received) AS total_profit
+        SUM((p.selling_price - p.unit_cost) * (sh.quantity_received-sh.quantity_damaged)) AS total_profit,
+        sum(transport_cost) as total_trans
     FROM suppliers s
     JOIN productskl p
         ON s.supplier_id = p.supplier_id
@@ -237,8 +243,10 @@ select supplier_name, avg(lead_time_days) as avg_lead_time_in_days
 
 SELECT
     product_name,
-    total_profit
-FROM top_3_products;
+    total_profit - total_trans as net_profit
+FROM top_3_products
+order by net_profit desc
+limit 10;
 
 
 -- products with the highest damaged units
@@ -256,7 +264,7 @@ order by damaged_count desc;
 select * from productskl;
 select * from shipments;
 
-select product_name, sum(transport_cost/quantity_received) as unit_trans_cost
+select product_name, round(sum(transport_cost/quantity_received),2) as unit_trans_cost
 from productskl p
 join shipments s on
 p.product_id = s.product_id
@@ -267,19 +275,19 @@ order by unit_trans_cost desc ;
 
 WITH supplier_returns AS (
     SELECT
-        s.supplier_name,
-        SUM((p.selling_price) * sh.quantity_received) AS total_revenue
+        p.product_name,
+        SUM((p.selling_price) * (sh.quantity_received-sh.quantity_damaged)) AS total_revenue
     FROM suppliers s
     JOIN productskl p
         ON s.supplier_id = p.supplier_id
     JOIN shipments sh
         ON p.product_id = sh.product_id
-    GROUP BY s.supplier_name
+    GROUP BY p.product_name
 )
 SELECT
-    supplier_name,
+   product_name,
     total_revenue,
-    RANK() OVER (ORDER BY total_revenue DESC) AS supplier_rank
+    RANK() OVER (ORDER BY total_revenue DESC) AS peoduct_rank
 FROM supplier_returns
 ;
 
@@ -288,7 +296,7 @@ FROM supplier_returns
 WITH product_returns AS (
     SELECT
         p.product_name,
-        SUM(p.selling_price * sh.quantity_received) AS total_revenue
+        SUM(((p.selling_price - unit_cost) * (sh.quantity_received-sh.quantity_damaged))- transport_cost) AS total_profit
     FROM suppliers s
     JOIN productskl p
         ON s.supplier_id = p.supplier_id
@@ -298,8 +306,8 @@ WITH product_returns AS (
 )
 SELECT
     product_name,
-    total_revenue,
-    RANK() OVER (ORDER BY total_revenue DESC) AS product_rank
+    total_profit,
+    RANK() OVER (ORDER BY total_profit DESC) AS product_rank
 FROM product_returns
 ;
 
@@ -310,7 +318,7 @@ WITH top_3_products AS (
     SELECT
         p.product_name,
 		
-        SUM((p.selling_price - p.unit_cost) * sh.quantity_received) AS total_profit
+        SUM(((p.selling_price - p.unit_cost) * (sh.quantity_received-sh.quantity_damaged))- transport_cost) AS total_profit
     FROM suppliers s
     JOIN productskl p
         ON s.supplier_id = p.supplier_id
@@ -349,7 +357,7 @@ select * from shipments;
 
 
 select category,
-sum(selling_price * quantity_received) as revenue
+sum(selling_price * (sh.quantity_received-sh.quantity_damaged)) as revenue
 from productskl p
 join shipments sh on
 p.product_id = sh.product_id
@@ -358,7 +366,7 @@ order by revenue desc;
 
 -- product category with the highest profit
 
-select category, sum((selling_price-unit_cost) * quantity_received) as profit
+select category, sum(((selling_price-unit_cost) * (sh.quantity_received-sh.quantity_damaged))- transport_cost) as profit
 from productskl p
 join shipments sh on
 p.product_id = sh.product_id
@@ -370,7 +378,7 @@ order by profit desc;
 -- category with the highest profit margin
 
 with prof_tab as
-( select category, sum((selling_price-unit_cost) * quantity_received) as profit, sum(selling_price* quantity_received) as revenue
+( select category, sum((selling_price-unit_cost) * (sh.quantity_received-sh.quantity_damaged)) as profit, sum(selling_price * (sh.quantity_received-sh.quantity_damaged)) as revenue
 from productskl p
 join shipments sh on
 p.product_id = sh.product_id
@@ -470,7 +478,7 @@ order by avg_cost_per_unit;
 
 -- warehouse performance based on profitability
 
-select warehouse, sum((selling_price-unit_cost) * quantity_received) as profit
+select warehouse, sum((selling_price-unit_cost) * (sh.quantity_received-sh.quantity_damaged))- sum(transport_cost) as profit
 from shipments sh
 join productskl p on
 sh.product_id = p.product_id
@@ -517,9 +525,9 @@ order by total_logistics desc;
 
 select 
     category,
-    sum(selling_price * quantity_received) as tot_rev,
+    sum(selling_price * (sh.quantity_received-sh.quantity_damaged)) as tot_rev,
     sum(transport_cost) as transport_cost,
-   round(sum(transport_cost) / sum(selling_price * quantity_received) * 100,2) as transport_percent
+   round(sum(transport_cost) / sum(selling_price * (sh.quantity_received-sh.quantity_damaged)) * 100,2) as transport_percent
 from suppliers s
 join productskl p
     on s.supplier_id = p.supplier_id
@@ -560,7 +568,7 @@ ORDER BY month;
 WITH monthly_shipments AS (
     SELECT
         DATE_FORMAT(shipment_date, '%Y-%m') AS month,
-        SUM(selling_price * quantity_received) AS monthly_rev
+        SUM(selling_price * (sh.quantity_received-sh.quantity_damaged)) AS monthly_rev
     FROM shipments sh
 join productskl p on
 sh.product_id = p.product_id 
@@ -577,7 +585,7 @@ order by month;
 
 with monthly_shipments as
 (select  DATE_FORMAT(shipment_date, '%Y-%m') AS month,
-sum((selling_price - unit_cost) * quantity_received) as profit
+sum((selling_price - unit_cost) * (sh.quantity_received-sh.quantity_damaged)) as profit
 FROM shipments sh
 join productskl p on
 sh.product_id = p.product_id 
@@ -596,7 +604,7 @@ order by month;
 WITH monthly_shipments AS (
     SELECT
         DATE_FORMAT(shipment_date, '%Y-%m') AS month,
-        SUM(selling_price * quantity_received) AS monthly_qty
+        SUM(selling_price * (sh.quantity_received-sh.quantity_damaged)) AS monthly_qty
     FROM shipments sh
     join productskl p on
     sh.product_id = p.product_id
@@ -615,7 +623,7 @@ ORDER BY month;
 WITH monthly_shipments AS (
     SELECT
         DATE_FORMAT(shipment_date, '%Y-%m') AS month,
-        SUM((selling_price - unit_cost) * quantity_received) AS profit
+        SUM((selling_price - unit_cost) * (sh.quantity_received-sh.quantity_damaged)) AS profit
    
     FROM shipments sh
     join productskl p on
@@ -635,7 +643,7 @@ ORDER BY month;
 -- top 10 products by profits
 
 select product_name, 
-sum((selling_price - unit_cost) * quantity_received) as profit
+sum((selling_price - unit_cost) * (sh.quantity_received-sh.quantity_damaged)) as profit
 FROM shipments sh
     join productskl p on
     sh.product_id = p.product_id
@@ -647,7 +655,7 @@ FROM shipments sh
     -- top 5 suppliers by revenue
     
     select supplier_name, 
-    sum(selling_price * quantity_received) as tot_rev
+    sum(selling_price * (sh.quantity_received-sh.quantity_damaged)) as tot_rev
     from suppliers s
     join productskl p on
     s.supplier_id = p.supplier_id
@@ -660,7 +668,7 @@ FROM shipments sh
     -- top warehouse by inventory value
     
     select warehouse, 
-    sum(selling_price * quantity_received) as inventory_value
+    sum(selling_price * (sh.quantity_received-sh.quantity_damaged)) as inventory_value
     from suppliers s
     join productskl p on
     s.supplier_id = p.supplier_id
@@ -676,7 +684,7 @@ FROM shipments sh
   -- products rank within category... id use profit to rank them
   
   with faji as
-  ( select product_name, category, sum((selling_price - unit_cost) * quantity_received) as profit
+  ( select product_name, category, sum((selling_price - unit_cost) * (sh.quantity_received-sh.quantity_damaged)) as profit
   from productskl p
   join shipments s on
   p.product_id = s.product_id
@@ -735,7 +743,7 @@ ORDER BY month, ranking;
  
  with monthly_shipments as
 (select  product_name, 
-sum((selling_price - unit_cost) * quantity_received) as profit
+sum((selling_price - unit_cost) * (sh.quantity_received-sh.quantity_damaged))-sum(transport_cost) as profit
 FROM shipments sh
 join productskl p on
 sh.product_id = p.product_id 
@@ -744,16 +752,17 @@ sh.product_id = p.product_id
 select product_name,
 profit
 from monthly_shipments
-order by profit desc;
+order by profit asc
+limit 20;
 
--- no shipments had negative profits
+
 
 -- suppliers with above average profit
 
 
 with gauge as
 ( select supplier_name, 
-sum((selling_price - unit_cost) * quantity_received) as profit
+sum((selling_price - unit_cost) * (sh.quantity_received-sh.quantity_damaged)) as profit
 FROM shipments sh
 join productskl p on
 sh.product_id = p.product_id 
@@ -776,11 +785,11 @@ p.supplier_id = s.supplier_id
     from gauge
     cross join avg_profit;
 
--- warehouses operating above the cokpany average profit
+-- warehouses operating above the company average profit
 
 with gauge as
 ( select warehouse,
-sum((selling_price - unit_cost) * quantity_received) as profit
+sum((selling_price - unit_cost) * (sh.quantity_received-sh.quantity_damaged)) as profit
 FROM shipments sh
 join productskl p on
 sh.product_id = p.product_id 
@@ -803,23 +812,25 @@ from gauge
 cross join avg_profit;
 
 
--- comparing gross profit vs net profit(revenue) fro each supplier
+-- comparing gross profit vs net profit(revenue) from each supplier
 
 with comp as
 ( select supplier_name,
-sum((selling_price - unit_cost) * quantity_received) as profit,
-sum(selling_price * quantity_received) as revenue
- FROM shipments sh
+sum((selling_price - unit_cost) * (sh.quantity_received-sh.quantity_damaged)) as profit,
+sum(selling_price * (sh.quantity_received-sh.quantity_damaged)) as revenue
+from shipments sh
 join productskl p on
 sh.product_id = p.product_id 
 join suppliers s on
 p.supplier_id = s.supplier_id
 group by supplier_name),
+
 avg_profit as (select avg(profit) as average_profit from comp)
+
 select supplier_name,
 revenue,
 profit,
-revenue-profit as prod_cost_x_transport, 
+revenue-profit as prod_cost, 
 case when profit >= average_profit
 then 'profitable'
 else 'non-profitable' end as true_comp_against_avg_profit
@@ -830,7 +841,7 @@ cross join avg_profit;
 with cte as (
 	select supplier_name, 
 sum((selling_price - unit_cost) * quantity_received) as profit,
-sum(selling_price * quantity_received) as inventory_value,
+sum(selling_price * (sh.quantity_received-sh.quantity_damaged)) as inventory_value,
 sum(quantity_damaged) as damage_rate,
 sum(transport_cost) as transport_implication,
 sum(quantity_received) as shipment_volume
