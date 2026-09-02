@@ -14,7 +14,7 @@ Management wants to understand:
 * How shipment performance changes throughout the year.
 
 ## Dataset
-- [Suppliers](vertex-supply-analysis/suppliers.csv)
+- ![Suppliers](vertex-supply-analysis/suppliers.csv)
 - [Products](data/products.csv)
 - [Shipments](data/shipments.csv)
 
