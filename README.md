@@ -48,19 +48,20 @@ Which suppliers or products should management prioritize for improvement or expa
 *  Calculated business metrics
 
 ## Key Findings
-* PeakBlue Suppliers lead in profit contribution with a profit margin of 45.88%
+* Metro Components leads in profit contribution with a profit margin of 36.43%
 * PeakBlue Suppliers have the highest damaged goods count
-* PeakBlue Suppliers have shown proof of balance with profitability and reliability. Good returns all year round
+* Infinity Sourcing and Alpha Manufacturing close the year in negative profits. 
 * Office Supply Item 58 had the highest revenue potential at 324720, with a gross profit of 136220
-* Kitchen products lead the profitability line with a figure of 1187738
+* Kitchen products led the profitability line with a figure of 1187738
 * Ibadan warehouse had the highest shipping volume with 59648 goods received
 * Port-Harcourt warehouse incurred the highest transportation cost with 378720
 * Average damage percentage is 2.56%. Electronics have the highest count: 1,524
 
 ## Recommendations
-* Transportation accounts for about 80% of the production cost. It's on the high end.
-* When compared against the average profit, Metro Components lead the suppliers with a decent profit margin and a good return above average. Attention to be paid to BluePeak suppliers who have the highest profit margin but returned unprofitable by end of year. Prime Components as well. High profit margin but failed to beat the average.
-
+* Transportation accounts for about 50% of the production cost. It's fair, with room for improvement.
+* When compared against the average profit, Metro Components leads the suppliers with a decent profit margin and a good return above average. 
+* Horizon Industrial Co., Excel Procurement Ltd., Sterling Manufacturing, Atlas Supply Group, & Metro Components are the top five suppliers, each with above $380k in profits.
+* While Alpha Manufacturing's profit could be preserved with better transportation handling, Infinity Sourcing still isn't profitable, even with projected revenue without damaged goods. 
 
 ## Screenshots
 * [Profitability Table](Profitability_table.png)
