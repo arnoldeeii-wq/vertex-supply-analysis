@@ -6,11 +6,13 @@ from shipments;
 
 -- Total Revenue Potential
 
-select sum(selling_price * quantity_received) as revenue_potential
+select 
+sum(selling_price * quantity_received) as revenue_potential
 from productskl
 join shipments
 on
-productskl.product_id = shipments.product_id;
+productskl.product_id = shipments.product_id
+order by revenue_potential desc;
 
 -- Total Gross Profit
 with net as
@@ -22,8 +24,11 @@ from productskl p
 join shipments sh on
 p.product_id = sh.product_id
 group by product_name, selling_price)
-select sum(net_rev) -sum(inventory_cost) as gross_profit
-from net;
+
+select
+sum(net_rev) -sum(inventory_cost) as gross_profit
+from net
+order by gross_profit desc;
 
 -- Total Net Profit after Transportation Cost
 
@@ -231,8 +236,7 @@ select supplier_name, avg(lead_time_days) as avg_lead_time_in_days
  WITH top_3_products AS (
     SELECT
          p.product_name,
-        SUM((p.selling_price - p.unit_cost) * (sh.quantity_received-sh.quantity_damaged)) AS total_profit,
-        sum(transport_cost) as total_trans
+        SUM(((p.selling_price - p.unit_cost) * (sh.quantity_received-sh.quantity_damaged))-transport_cost) AS total_profit
     FROM suppliers s
     JOIN productskl p
         ON s.supplier_id = p.supplier_id
@@ -243,19 +247,22 @@ select supplier_name, avg(lead_time_days) as avg_lead_time_in_days
 
 SELECT
     product_name,
-    total_profit - total_trans as net_profit
+    total_profit
 FROM top_3_products
-order by net_profit desc
+order by total_profit desc
 limit 10;
 
 
 -- products with the highest damaged units
 
-select product_name, sum(quantity_damaged) damaged_count
-from productskl p
-join shipments s on
-p.product_id = s.product_id
-group by product_name
+select category, sum(quantity_damaged) damaged_count
+
+ FROM suppliers s
+    JOIN productskl p
+        ON s.supplier_id = p.supplier_id
+    JOIN shipments sh
+        ON p.product_id = sh.product_id
+        group by category
 order by damaged_count desc;
 
 
@@ -451,7 +458,7 @@ select
     warehouse,
     sum(quantity_received) as qty_received,
     sum(quantity_damaged) as damage_count,
-    sum(quantity_damaged) * 100.0 / sum(quantity_received) as damage_rate
+    round(sum(quantity_damaged) * 100.0 / sum(quantity_received),2) as damage_rate
 from shipments
 group by warehouse
 order by damage_rate desc;
@@ -817,7 +824,8 @@ cross join avg_profit;
 with comp as
 ( select supplier_name,
 sum((selling_price - unit_cost) * (sh.quantity_received-sh.quantity_damaged)) as profit,
-sum(selling_price * (sh.quantity_received-sh.quantity_damaged)) as revenue
+sum(selling_price * (sh.quantity_received-sh.quantity_damaged)) as revenue,
+sum(transport_cost) as total_trans
 from shipments sh
 join productskl p on
 sh.product_id = p.product_id 
@@ -830,6 +838,7 @@ avg_profit as (select avg(profit) as average_profit from comp)
 select supplier_name,
 revenue,
 profit,
+total_trans,
 revenue-profit as prod_cost, 
 case when profit >= average_profit
 then 'profitable'
@@ -839,42 +848,63 @@ cross join avg_profit;
 
 -- if we had to reduce our supplier base to the top 5 suppliers...
 with cte as (
-	select supplier_name, 
-sum((selling_price - unit_cost) * quantity_received) as profit,
-sum(selling_price * (sh.quantity_received-sh.quantity_damaged)) as inventory_value,
+select supplier_name,
+	sum(selling_price * (sh.quantity_received - quantity_damaged)) as revenue,
+
+	sum(selling_price * quantity_received) as projected_revenue_without_damages,
+
+		sum((selling_price - unit_cost) * (sh.quantity_received - sh.quantity_damaged)) as profit,
+
 sum(quantity_damaged) as damage_rate,
+
+sum(quantity_received) as shipment_volume,
+
 sum(transport_cost) as transport_implication,
-sum(quantity_received) as shipment_volume
+
+sum(quantity_received) - sum(quantity_damaged) as qty_sold,
+
+SUM(
+    unit_cost * (quantity_received)
+) AS inventory_cost
+
  FROM shipments sh
+
 join productskl p on
 sh.product_id = p.product_id 
+
 join suppliers s on
 p.supplier_id = s.supplier_id
+
 group by supplier_name),
 
-avg_profit as (select avg(profit) as average_profit from cte),
+	net_profit as ( select cte.*,  revenue - inventory_cost - transport_implication as true_prof from cte),
 
-scorecard as (select cte.*,
- case when profit >= average_profit
+	avg_profit as( select avg(true_prof) as average_profit from net_profit),
+
+	scorecard as (select
+		net_profit.*,
+		avg_profit.average_profit,
+
+	case when true_prof >= average_profit
 then 'profitable'
 else 'non-profitable' end as true_comp_against_avg_profit
-from cte
+from net_profit
 cross join avg_profit)
 
 	select supplier_name,
- profit,
- inventory_value,
-   round(profit * 100.0 / inventory_value,2) AS profit_margin,
+ true_prof,
+ average_profit,
+ revenue,
+ projected_revenue_without_damages,
+   round(true_prof * 100.0 / revenue,2) AS profit_margin,
  damage_rate,
-
+ inventory_cost,
  transport_implication,
  shipment_volume,
-   true_comp_against_avg_profit,
-rank () over (
-order by profit desc) as supp_rank
+ qty_sold,
+   true_comp_against_avg_profit
 from scorecard
-order by supp_rank
-limit 7;
+order by true_prof desc
+;
 
 -- limit 7 so we can see what the margin is betweeen the 6th and 7th suppliers
-
