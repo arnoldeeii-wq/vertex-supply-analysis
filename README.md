@@ -69,3 +69,4 @@ Which suppliers or products should management prioritize for improvement or expa
 * [Gross Profit](gross_profit.png)
 * [Products Profit Rank](products_profit_rank.png)
 * [Revenue Potential](revenue_potential.png)
+* [Gross Revenue](Gross_revenue.png)
