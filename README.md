@@ -64,7 +64,7 @@ Which suppliers or products should management prioritize for improvement or expa
 * While Alpha Manufacturing's profit could be preserved with better transportation handling, Infinity Sourcing still isn't profitable, even with projected revenue without damaged goods. 
 
 ## Screenshots
-* [Profitability Table](Profitability_table.png)
+* [Profitability Table](profitability_table.png)
 * [Suppliers Logistics Cost](Suppliers_logistics_cost.png)
 * [Gross Profit](gross_profit.png)
 * [Products Profit Rank](products_profit_rank.png)
