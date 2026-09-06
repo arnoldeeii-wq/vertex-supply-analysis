@@ -36,7 +36,7 @@ Profit margin
 Revenue lost due to damaged products
 Transportation cost
 Damage rate
-- [Business KPIs](Business_kpis)
+- [Business KPIs](Business_kpis.sql)
 
 ## SQL Techniques Used
 *  Multi-table JOINs
