@@ -47,7 +47,7 @@ Analysis of product profitability, loss-making products, category performance an
 
 ### 3. Supplier Analysis
 Analysis of supplier profitability, loss-making suppliers, supplier performance and transportation costs.
--  [Supplier Analysis](supplier_analysis.sql)
+-  [Supplier Analysis](suppliers_analysis.sql)
 
 
 ### 4. Warehouse & Shipment Analysis
@@ -95,10 +95,92 @@ Analysis of inventory volumes, warehouse performance and shipment trends over ti
 * Office Supplies had the **lowest damage count (1,476)** among the five categories, while Kitchen products recorded **1,484 damaged units** despite being the highest-revenue category.
 
 
+### Supplier Analysis
+
+* **Metro Components** generated the highest inventory value at approximately **$1.36M**, followed by **Atlas Supply Group ($1.29M)** and **Sterling Manufacturing ($1.25M)**.
+* The same three suppliers also made the largest contributions to profit, generating approximately **$604K**, **$575K**, and **$554K**, respectively.
+* **Infinity Sourcing** had the lowest inventory value at approximately **$129.4K** and the lowest profit contribution at approximately **$57.5K**, indicating a relatively small financial contribution compared with the leading suppliers.
+* **Frontline Distributors** shipped the highest number of units at **15,240**, followed by **Pacific Source Ltd. (15,189)** and **Vertex Global Supply (15,138)**.
+* **Global Supply Ltd.** recorded the lowest shipment volume among the suppliers at **14,394 units**.
+* **Continental Traders** had the lowest damage rate at **1.94%**, followed by **Zenith Imports (2.01%)** and **Sterling Manufacturing (2.02%)**, indicating stronger inventory quality performance from these suppliers.
+* **Prime Components** recorded the highest damage rate at **3.12%**, making it the supplier with the greatest proportion of damaged goods and a potential area for supplier performance review.
+* **Alpha Manufacturing** had the lowest total transportation cost at approximately **$83.7K**, followed by **Prime Components ($85.6K)** and **Infinity Sourcing ($85.8K)**.
+* **Vertex Global Supply** incurred the highest total logistics cost at approximately **$104.1K**, suggesting an opportunity to investigate transportation efficiency and associated shipping costs.
+* **Zenith Imports** had the shortest average lead time at **8 days**. **NovaTech Industries, Vertex Global Supply, and Infinity Sourcing** followed at **9 days**, while **Prime Components** recorded a **10-day** lead time.
+* **EverBright Manufacturing** had the longest lead time at **16 days**, potentially increasing the risk of delayed replenishment and inventory shortages.
 
 
 
+### Warehouse / Logistics Analysis
 
+* **Ibadan** received the highest volume of goods, with **59,648 units**, while **Port Harcourt** received the lowest at **59,254 units**.
+* **Kano** held the highest inventory value at approximately **$3.52M**, followed by **Port Harcourt at $3.26M**.
+* Despite receiving the highest number of units, **Ibadan had the lowest inventory value at approximately $2.50M**, indicating that its inventory consisted of relatively lower-value products.
+* **Lagos** recorded the highest number of damaged goods at **1,524 units**, followed by **Ibadan (1,508)** and **Port Harcourt (1,476)**.
+* Kano generated the highest profit at approximately **$1.19M**, while Ibadan generated the lowest at approximately **$733.8K**.
+* Ibadan's lower profitability can be attributed to its concentration of **Accessory products**, which recorded the lowest revenue, profit, and profit margin among the product categories.
+* **Office Supplies** incurred the highest total logistics cost at approximately **$378.7K**, representing **11.6% of revenue**.
+* **Accessories** had logistics costs consuming the largest proportion of their revenue, at approximately **15.05%**, further contributing to the category's relatively low profitability.
+
+### Time-Based Analysis
+
+* Total transportation costs reached their **highest level in April**, at approximately **$189K**, while the lowest transportation cost was recorded in **October**, at approximately **$130K**.
+* The company received its highest volume of imports in **August**, with **28,980 units**, while **October** recorded the lowest import volume at **17,115 units**.
+* Despite August having the highest overall import volume, **April had the highest transportation cost**. This suggests that shipment volume alone did not determine logistics expenditure.
+* The highest-performing **Kitchen category** had its highest import volume in **April**, with **5,745 units**, and its lowest in **October**, with **3,800 units**. This contributed to April's high transportation expenditure.
+* **May** recorded the highest revenue turnover at approximately **$1.50M**, making it the company's strongest month for sales.
+* **December** recorded the lowest revenue turnover at approximately **$796.5K**, making it the weakest month for sales.
+* **May was also the most profitable month**, while **December was the least profitable**, consistent with their respective revenue performance.
+* The difference between peak import volume and peak logistics cost indicates that **the timing and composition of imports may have a greater effect on transportation costs than shipment volume alone**.
+
+
+Yep — you want the recommendations **compressed into the same short bullet style as the structure**, not a whole essay under each heading.
+
+## Recommendations
+
+### Supplier Management
+
+* Prioritize high-performing suppliers while maintaining strong relationships with Metro Components, Atlas Supply Group, and Sterling Manufacturing.
+* Review Prime Components due to its highest damage rate and investigate quality-control issues.
+* Negotiate better transportation rates with high-cost suppliers, particularly Vertex Global Supply.
+* Review EverBright Manufacturing's long lead time and assess alternative sourcing options.
+
+### Product & Category Strategy
+
+* Prioritize high-performing products such as Office Item 58 and Kitchen Item 99 due to their strong revenue, profit, and low logistics costs.
+* Review or discontinue consistently loss-making products, particularly Accessory Items 60 and 20.
+* Review Accessory Item 75 due to its relatively high logistics cost and lower profit contribution.
+* Increase focus on the Kitchen category while improving the profitability of the weaker Accessories category.
+
+### Logistics & Operations
+
+* Investigate the factors behind April's unusually high transportation cost and identify opportunities to reduce shipping expenses.
+* Reduce logistics costs within the Accessories category, where transportation consumes the highest share of revenue.
+* Review Office Supplies' high total logistics expenditure for potential cost savings.
+* Improve warehouse handling and storage processes to reduce product damage, particularly at Lagos.
+
+### Inventory Management
+
+* Allocate inventory based on profitability and demand rather than shipment volume alone.
+* Increase inventory emphasis on high-performing categories, particularly Kitchen products.
+* Use historical sales patterns to improve import timing and stock availability during stronger sales periods.
+* Monitor damaged inventory closely to avoid overestimating sellable stock.
+
+### Overall Strategy
+
+* Focus on profitable growth by protecting the company's **30.48% profit margin** while increasing revenue.
+* Establish a supplier and product performance scorecard using profitability, damage rates, logistics costs, and lead times.
+* Reduce avoidable logistics and damage costs, particularly within weaker-performing categories.
+* Continuously use sales, inventory, supplier, and logistics data to guide purchasing and operational decisions.
+
+
+## Conclusion
+
+The analysis shows that the company is operating profitably, generating approximately **$15.05M in sellable revenue**, **$4.59M in net profit**, and an overall **30.48% profit margin**. However, performance varies considerably across products, categories, suppliers, warehouses, and periods.
+
+**Kitchen products** emerged as the strongest category, while **Accessories** consistently underperformed in revenue, profit, and logistics efficiency. At the product level, some items generated significant losses and should be reviewed for discontinuation or restructuring. Supplier performance also varied, particularly in terms of damage rates, transportation costs, and lead times.
+
+Overall, the company has a strong foundation for profitable growth, but there are opportunities to improve performance by **optimizing supplier selection, reducing logistics and damage costs, focusing inventory on high-performing products and categories, and discontinuing consistently unprofitable products**. Using these insights to guide future operational and purchasing decisions can help the company increase profitability while maintaining efficient inventory and logistics management.
 
 
 ## SQL Techniques Used
@@ -113,21 +195,6 @@ Analysis of inventory volumes, warehouse performance and shipment trends over ti
 *  Filtering
 *  Calculated business metrics
 
-## Key Findings
-* Metro Components leads in profit contribution with a profit margin of 36.43%
-* PeakBlue Suppliers have the highest damaged goods count
-* Infinity Sourcing and Alpha Manufacturing close the year in negative profits. 
-* Office Supply Item 58 had the highest revenue potential at 324720, with a gross profit of 136220
-* Kitchen products led the profitability line with a figure of 1187738
-* Ibadan warehouse had the highest shipping volume with 59648 goods received
-* Port-Harcourt warehouse incurred the highest transportation cost with 378720
-* Average damage percentage is 2.56%. Electronics have the highest count: 1,524
-
-## Recommendations
-* Transportation accounts for about 50% of the production cost. It's fair, with room for improvement.
-* When compared against the average profit, Metro Components leads the suppliers with a decent profit margin and a good return above average. 
-* Horizon Industrial Co., Excel Procurement Ltd., Sterling Manufacturing, Atlas Supply Group, & Metro Components are the top five suppliers, each with above $380k in profits.
-* While Alpha Manufacturing's profit could be preserved with better transportation handling, Infinity Sourcing still isn't profitable, even with projected revenue without damaged goods. 
 
 ## Screenshots
 * [Profitability Table](profitability_table.png)
