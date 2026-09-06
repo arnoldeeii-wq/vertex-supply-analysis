@@ -3,7 +3,8 @@
 ## Project Overview
 ### Vertex Supply Chain Ltd. imports and distributes consumer goods to warehouses across the country. The task is to generate business insights by querying the data that had been cleaned beforehand by the data engineering team. 
 
-## Objectives
+
+## Key Business Questions
 Management wants to understand:
 * Which suppliers contribute the most value to the business.
 * Which products generate the highest profits.
@@ -18,22 +19,24 @@ Management wants to understand:
 - [Products](products.csv)
 - [Shipments](shipments.csv)
 
-## Database Schema
-- [Script](vertex_company_main_script.sql)
+## SQL ANALYSIS
+The analysis was divided into 6 main areas:
 
-  
-## Key Business Questions
-Which suppliers are contributing the most to overall profitability?
-Which suppliers have the highest shipment damage rates?
-Which suppliers provide the best balance of profitability, reliability, and lead time?
-Which products generate the highest gross profit and revenue potential?
-Which product categories are the most profitable?
-Which warehouses handle the highest shipment volumes?
-Which warehouses have the highest transportation costs?
-How significant are damaged units across the supply chain, and which areas have the highest damage rates?
-How does transportation cost affect overall profitability?
-Which suppliers or products should management prioritize for improvement or expansion?
+### 1. Business KPIs
+The business KPI analysis measures overall supply chain performance, including:
 
+Total inventory received
+Total damaged products
+Potential revenue
+Net revenue
+Gross profit
+Net profit
+Total inventory cost
+Profit margin
+Revenue lost due to damaged products
+Transportation cost
+Damage rate
+- [Business KPIs](Business_kpis)
 
 ## SQL Techniques Used
 *  Multi-table JOINs
