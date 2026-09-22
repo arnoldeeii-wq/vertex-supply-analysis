@@ -208,3 +208,6 @@ Overall, the company has a strong foundation for profitable growth. By **optimiz
 * [Products Profit Rank](products_profit_rank.png)
 * [Revenue Potential](revenue_potential.png)
 * [Gross Revenue](Gross_revenue.png)
+
+# Dashboards
+* [Warehouses](warehouse_dash.png)
