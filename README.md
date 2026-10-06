@@ -90,16 +90,18 @@ Analysis of inventory volumes, warehouse performance, transportation costs, and 
 * Gross profit from sellable inventory was approximately **$6.47M**.
 * After deducting **$1.88M** in transportation costs, net profit was approximately **$4.59M**.
 * The overall **net profit margin was 30.48%**.
+# Supply Chain Performance Analysis
+
 
 ## Product Analysis
 
-* **Office Item 58** generated the highest revenue among individual products at **$316,620**, followed by **Kitchen Item 99** at approximately **$302,000**.
-* Office Item 58 and Kitchen Item 99 also generated the highest individual profits, at approximately **$123,411** and **$117,244**, respectively.
-* **Office Item 58 had the lowest unit logistics cost** among the highlighted products at **$4.80**, while Kitchen Item 99 had a unit logistics cost of **$5.22**.
-* **Accessory Item 75** had a relatively high unit logistics cost of **$8.03** and generated approximately **$59,139** in profit, indicating an opportunity to review its transportation efficiency and overall profitability.
-* Several products generated **negative profits**, with **Accessory Item 60 (-$6,545)** recording the largest loss, followed by **Accessory Item 20 (-$6,527)** and **Accessory Item 80 (-$5,989)**.
+* **Desk Calculator** generated the highest revenue among individual products at **$316,620**, followed by **Kitchen Grater** at approximately **$302,000**.
+* Desk Calculator and Kitchen Grater also generated the highest individual profits, at approximately **$123,411** and **$117,244**, respectively.
+* **Desk Calculator had the lowest unit logistics cost** among the highlighted products at **$4.80**, while Kitchen Grater had a unit logistics cost of **$5.22**.
+* **Reusable Shopping Bag** had a relatively high unit logistics cost of **$8.03** and generated approximately **$59,139** in profit, indicating an opportunity to review its transportation efficiency and overall profitability.
+* Several products generated **negative profits**, with **Travel Pouch (-$6,545)** recording the largest loss, followed by **Key Holder (-$6,527)** and **Accessory Item 80 (-$5,989)**.
 * Loss-making products were concentrated primarily among **Accessories**, although **Electronic Items 21, 61, and 81** also recorded negative profits.
-* **Accessory Item 20** had the lowest revenue among the listed products at approximately **$22,338**, reinforcing the need to assess whether continued inventory allocation is justified.
+* **Key Holder** had the lowest revenue among the listed products at approximately **$22,338**, reinforcing the need to assess whether continued inventory allocation is justified.
 
 ## Category Analysis
 
@@ -159,9 +161,9 @@ Analysis of inventory volumes, warehouse performance, transportation costs, and 
 
 ## Product & Category Strategy
 
-* Prioritize high-performing products such as Office Item 58 and Kitchen Item 99 due to their strong revenue, profit, and low logistics costs.
-* Review or discontinue consistently loss-making products, particularly Accessory Items 60 and 20.
-* Review Accessory Item 75 due to its relatively high logistics cost and lower profit contribution.
+* Prioritize high-performing products such as Desk Calculator and Kitchen Grater due to their strong revenue, profit, and low logistics costs.
+* Review or discontinue consistently loss-making products, particularly Travel Pouch and Key Holder.
+* Review Reusable Shopping Bag due to its relatively high logistics cost and lower profit contribution.
 * Increase focus on the Kitchen category while improving the profitability of the weaker Accessories category.
 
 ## Logistics & Operations
@@ -214,6 +216,9 @@ Overall, the company has a strong foundation for profitable growth. By **optimiz
 * [Products Profit Rank](products_profit_rank.png)
 * [Revenue Potential](revenue_potential.png)
 * [Gross Revenue](Gross_revenue.png)
+
+
+
 
 
 
