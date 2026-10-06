@@ -212,5 +212,5 @@ Overall, the company has a strong foundation for profitable growth. By **optimiz
 # Dashboards
 * [Warehouses](warehouse_dash.png)
 * [Products](product_dash.png)
-* [Suppliers](supp_dash.png)
+* [Suppliers](supplier_dash.png)
 * [Logistics](logistics_dash.png)
