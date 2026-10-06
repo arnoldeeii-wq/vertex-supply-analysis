@@ -59,18 +59,24 @@ The business KPI analysis measures overall supply chain performance, including:
 Analysis of product profitability, loss-making products, category performance, and product damage rates.
 
 * [Product Analysis](product_sql.sql)
+* [Products Dashboard](product_dash.png)
 
 ### 3. Supplier Analysis
 
 Analysis of supplier profitability, supplier performance, damage rates, lead times, and transportation costs.
 
 * [Supplier Analysis](suppliers_analysis.sql)
+* [Suppliers Dashboard](supplier_dash.png)
+
 
 ### 4. Warehouse & Shipment Analysis
 
 Analysis of inventory volumes, warehouse performance, transportation costs, and shipment trends over time.
 
 * [Warehouse and Shipment Analysis](warehouse_analysis.sql)
+* [Warehouse Dashboard](warehouse_dash.png)
+*  [Logistics Dashboard](logistics_dash.png)
+  
 
 # Key Findings
 
@@ -209,8 +215,5 @@ Overall, the company has a strong foundation for profitable growth. By **optimiz
 * [Revenue Potential](revenue_potential.png)
 * [Gross Revenue](Gross_revenue.png)
 
-# Dashboards
-* [Warehouses](warehouse_dash.png)
-* [Products](product_dash.png)
-* [Suppliers](supplier_dash.png)
-* [Logistics](logistics_dash.png)
+
+
